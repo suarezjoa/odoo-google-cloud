@@ -1,0 +1,38 @@
+services:
+  web:
+    image: odoo:16
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - "9069:8069" # odoo port here you will see you app on this port
+      - "9072:8072" # odoo websocket port for communication
+    volumes:
+      - odoo-web-data-project:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+    environment:
+      - PASSWORD_FILE=/run/secrets/postgresql_password
+    secrets:
+      - postgresql_password
+
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD_FILE=/run/secrets/postgresql_password
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    restart: always
+    volumes:
+      - odoo-db-data-project:/var/lib/postgresql/data
+    secrets:
+      - postgresql_password
+
+volumes:
+  odoo-web-data-project:
+  odoo-db-data-project:
+
+secrets:
+  postgresql_password:
+    file: odoo_pass
