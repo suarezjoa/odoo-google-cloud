@@ -85,7 +85,7 @@ Instala Nginx como servidor web y Certbot para certificados SSL.
 
 ## Paso 11: Configurar Nginx
 ```bash
-sudo nano /etc/nginx/sites-available/Odoo
+sudo nano /etc/nginx/sites-available/odoo-google-cloud
 ```
 Configura Nginx como proxy inverso:
 ```nginx
@@ -115,7 +115,7 @@ server {
 
 ## Paso 12: Habilitar Sitio Nginx
 ```bash
-sudo ln -s /etc/nginx/sites-available/Odoo /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/odoo-google-cloud /etc/nginx/sites-enabled/
 sudo nginx -t
 ```
 Crea enlace simbólico y verifica la configuración de Nginx.
@@ -149,4 +149,3 @@ http://<tu-dominio>:9069
 - Asegúrate de que los puertos necesarios estén abiertos en el firewall
 - Mantén las contraseñas seguras y no las compartas
 - Realiza copias de seguridad regularmente
-
