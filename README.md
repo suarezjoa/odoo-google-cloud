@@ -56,8 +56,7 @@ Instala Git para clonar el repositorio de Odoo.
 ## Paso 7: Clonar Repositorio de Odoo
 ```bash
 git clone https://github.com/suarezjoa/odoo-google-cloud.git
-cd Odoo
-git switch Development/Production
+cd odoo-google-cloud
 ```
 Clona el repositorio y cambia a la rama de desarrollo/producción.
 
